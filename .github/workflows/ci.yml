@@ -38,6 +38,11 @@ jobs:
         run: |
           python demo/run_demo.py --config demo/configs/pilot.yaml
 
+      - name: Run tests (pytest + coverage)
+        run: |
+          pip install pytest pytest-cov
+          pytest --maxfail=1 --disable-warnings --cov=src --cov-fail-under=70 -q
+
       - name: Basic import check
         run: |
           python -c "import pandas as pd; print('pandas', pd.__version__)"
