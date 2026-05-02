@@ -1,5 +1,10 @@
 # e-grid-agent
 
+[![Release](https://img.shields.io/github/v/release/Jerry99657/E-Grid-Agent?style=flat-square)](https://github.com/Jerry99657/E-Grid-Agent/releases/latest)
+[![CI](https://github.com/Jerry99657/E-Grid-Agent/actions/workflows/ci.yml/badge.svg)](https://github.com/Jerry99657/E-Grid-Agent/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
+
+
 一套面向电力电子设备（如逆变器、变流器与电源管理单元）的多 Agent 智能运维与在线优化参考实现。
 
 本仓库提供轻量级演示代码、仿真脚本与复现所需的示例数据，便于快速搭建从数据采集、异常诊断到参数优化建议的端到端流程，实现边缘推理与云端验证的混合工作流。

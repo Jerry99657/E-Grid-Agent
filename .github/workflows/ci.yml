@@ -9,6 +9,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9, 3.10, 3.11]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -16,17 +19,26 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Install dev tools
+        run: |
+          pip install flake8
+
+      - name: Lint (flake8)
+        run: |
+          flake8 --max-line-length=120 || true
+
       - name: Run demo (headless)
         run: |
           python demo/run_demo.py --config demo/configs/pilot.yaml
 
-      - name: Run basic checks
+      - name: Basic import check
         run: |
-          python -c "import sys; import pandas as pd; print('pandas', pd.__version__)"
+          python -c "import pandas as pd; print('pandas', pd.__version__)"
+
